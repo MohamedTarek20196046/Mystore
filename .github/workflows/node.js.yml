@@ -24,12 +24,14 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      # Step 3: Install dependencies
+      # Step 3: Change directory to Web and install dependencies
       - name: Install dependencies
-        working-directory: Web
-        run: npm install
+        run: |
+          cd Web
+          npm install
 
-      # Step 4: Run tests
+      # Step 4: Run tests from the Web directory
       - name: Run tests
-        working-directory: Web
-        run: npm run test
+        run: |
+          cd Web
+          npm run test
