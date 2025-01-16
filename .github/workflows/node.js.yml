@@ -1,3 +1,5 @@
+name: Node.js CI
+
 on:
   push:
     branches: [ "main" ]
@@ -10,44 +12,25 @@ jobs:
 
     strategy:
       matrix:
+        # Use stable Node.js versions
         node-version: [ 20.x ]
+        # Add more versions if needed
 
     steps:
-      # Step 1: Checkout repository
-      - name: Checkout repository
-        uses: actions/checkout@v4
-
-      # Step 2: Verify the folder structure and current directory
-      - name: Debug folder structure
-        run: |
-          echo "Current directory:"
-          pwd
-          echo "Directory contents:"
-          ls -R
-
-      # Step 3: Set up Node.js environment, but specifically target the `Web` directory
-      - name: Use Node.js ${{ matrix.node-version }} in Web directory
+      # Checkout repository
+      - uses: actions/checkout@v4
+      
+      # Set up Node.js environment
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      # Step 4: Verify Node.js is correctly set up
-      - name: Verify Node.js version
-        run: node -v
-
-      # Step 5: Debug: Check the Web directory's contents
-      - name: Verify Web directory contents
-        run: ls -R Web
-
-      # Step 6: Install dependencies in the Web directory
+      # Install dependencies
       - name: Install dependencies
-        working-directory: Web
-        run: |
-          npm config get cache
-          npm install
+        run: npm ci
 
-      # Step 7: Run tests from the Web directory
+      # Run tests
       - name: Run tests
-        working-directory: Web
         run: npm run test
