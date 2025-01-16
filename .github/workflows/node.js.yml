@@ -27,14 +27,14 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      # Debug: Check folder structure before npm ci
-      - name: Verify web directory contents
-        run: ls -R web
+      # Debug: Check Web directory contents
+      - name: Verify Web directory contents
+        run: ls -R Web
 
       # Install dependencies
       - name: Install dependencies
-        run: cd ./web && npm ci
+        run: cd Web && npm ci
 
       # Run tests
       - name: Run tests
-        run: cd ./web && npm run test
+        run: cd Web && npm run test
