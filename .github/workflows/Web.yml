@@ -1,4 +1,4 @@
-name: Node.js CI
+name: Web CI
 
 on:
   push:
@@ -33,11 +33,4 @@ jobs:
       - name: Run Ui tests
         run: cd Web && npm run test
         
-      - name: Install dependencies
-        run: cd backend && npm ci
-
-      - name: Run api server
-        run: cd backend && npm run dev
-        
-      - name: Run api tests
-        run: cd backend && npm run test
+      
