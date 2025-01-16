@@ -10,13 +10,16 @@ jobs:
 
     strategy:
       matrix:
-        # Use stable Node.js versions
         node-version: [ 20.x ]
 
     steps:
       # Checkout repository
       - uses: actions/checkout@v4
       
+      # Debug: Check folder structure immediately after checkout
+      - name: Debug folder structure
+        run: ls -R
+
       # Set up Node.js environment
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
@@ -24,14 +27,14 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      # Debug: Check folder structure
-      - name: Debug folder structure
-        run: ls -R
+      # Debug: Check folder structure before npm ci
+      - name: Verify web directory contents
+        run: ls -R web
 
       # Install dependencies
       - name: Install dependencies
-        run: cd Web && npm ci
+        run: cd web && npm ci
 
       # Run tests
       - name: Run tests
-        run: cd Web && npm run test
+        run: cd web && npm run test
