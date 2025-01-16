@@ -16,32 +16,20 @@ jobs:
       # Step 1: Checkout repository
       - name: Checkout repository
         uses: actions/checkout@v4
-      
-      # Step 2: Debug: Check folder structure
-      - name: Debug folder structure
-        run: ls -R
-# Step 5: Debug: Print current working directory
-      - name: Print current working directory
-        run: pwd
-      # Step 3: Set up Node.js environment
+
+      # Step 2: Set up Node.js environment
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      # Step 4: Debug: Verify Web directory contents
-      - name: Verify Web directory contents
-        run: ls -R Web
-
-      
-
-      # Step 6: Install dependencies
+      # Step 3: Install dependencies
       - name: Install dependencies
         working-directory: Web
         run: npm install
 
-      # Step 7: Run tests
+      # Step 4: Run tests
       - name: Run tests
         working-directory: Web
         run: npm run test
