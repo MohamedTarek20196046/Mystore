@@ -27,8 +27,8 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        run: cd web && npm ci
+        run: cd Web && npm ci
 
       # Run tests
       - name: Run tests
-        run: cd web && npm run test
+        run: cd Web && npm run test
