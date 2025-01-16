@@ -17,21 +17,37 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # Step 2: Set up Node.js environment
-      - name: Use Node.js ${{ matrix.node-version }}
+      # Step 2: Verify the folder structure and current directory
+      - name: Debug folder structure
+        run: |
+          echo "Current directory:"
+          pwd
+          echo "Directory contents:"
+          ls -R
+
+      # Step 3: Set up Node.js environment, but specifically target the `Web` directory
+      - name: Use Node.js ${{ matrix.node-version }} in Web directory
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      # Step 3: Change directory to Web and install dependencies
+      # Step 4: Verify Node.js is correctly set up
+      - name: Verify Node.js version
+        run: node -v
+
+      # Step 5: Debug: Check the Web directory's contents
+      - name: Verify Web directory contents
+        run: ls -R Web
+
+      # Step 6: Install dependencies in the Web directory
       - name: Install dependencies
+        working-directory: Web
         run: |
-          cd Web
+          npm config get cache
           npm install
 
-      # Step 4: Run tests from the Web directory
+      # Step 7: Run tests from the Web directory
       - name: Run tests
-        run: |
-          cd Web
-          npm run test
+        working-directory: Web
+        run: npm run test
