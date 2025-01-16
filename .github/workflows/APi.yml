@@ -1,4 +1,4 @@
-name: Web CI
+name: Api CI
 
 on:
   push:
@@ -28,7 +28,7 @@ jobs:
         run: cd backend && npm ci
 
       - name: Run api server
-        run: cd backend && npm run dev
+        run: cd backend && nohup npm run dev &
         
       - name: Run api tests
         run: cd backend && npm run test
