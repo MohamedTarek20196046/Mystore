@@ -11,7 +11,7 @@ describe("Search test cases", function () {
         search.searchforitem(item)
         let elements = await browser.findElements(search.elements.items)
         const firstElement = elements[0] 
-        browser.assert.textContains(firstElement, "Dress")
+        browser.assert.textContains(firstElement, "Dressyigi")
     })
     it("Testing search with empty string", function (browser) {
         search.searchforitem(emptyItem)
