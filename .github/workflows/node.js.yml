@@ -20,7 +20,9 @@ jobs:
       # Step 2: Debug: Check folder structure
       - name: Debug folder structure
         run: ls -R
-
+# Step 5: Debug: Print current working directory
+      - name: Print current working directory
+        run: pwd
       # Step 3: Set up Node.js environment
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
@@ -32,9 +34,7 @@ jobs:
       - name: Verify Web directory contents
         run: ls -R Web
 
-      # Step 5: Debug: Print current working directory
-      - name: Print current working directory
-        run: pwd
+      
 
       # Step 6: Install dependencies
       - name: Install dependencies
