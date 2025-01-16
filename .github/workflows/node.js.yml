@@ -33,7 +33,7 @@ jobs:
 
       # Install dependencies
       - name: Install dependencies
-        run: cd Web && npm ci
+        run: cd Web && npm install
 
       # Run tests
       - name: Run tests
