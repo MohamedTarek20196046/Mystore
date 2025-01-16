@@ -23,10 +23,7 @@ jobs:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
           cache-dependency-path: ./Web/package-lock.json 
-
-      - name: Clear npm cache 
-        run: npm cache clean --force
-
+          
       - name: Install dependencies
         run: cd Web && npm ci
 
