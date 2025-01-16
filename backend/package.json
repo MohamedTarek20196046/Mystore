@@ -1,0 +1,39 @@
+{
+  "dependencies": {
+    "@babel/polyfill": "^7.12.1",
+    "ejs": "^3.1.10",
+    "jest": "^29.7.0",
+    "mock-user-auth": "^1.0.15"
+  },
+  "name": "backend",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "test": "jest",
+    "dev": "nodemon ./node_modules/mock-user-auth/bin/www.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": "",
+  "devDependencies": {
+    "@babel/plugin-transform-runtime": "^7.25.9",
+    "@babel/preset-env": "^7.26.0",
+    "babel-jest": "^29.7.0",
+    "jest-html-reporter": "^3.10.2",
+    "supertest": "^7.0.0"
+  },
+  "jest": {
+    "reporters": [
+      "default",
+      ["jest-html-reporter", {
+        "outputPath": "./test-report.html",
+        "pageTitle": "API Test Report",
+        "includeConsoleLog": true
+      }]
+    ],
+    "transform": {
+      "^.+\\.(js|jsx|ts|tsx)$": "babel-jest"
+    },
+    "testEnvironment": "node"
+  }
+}

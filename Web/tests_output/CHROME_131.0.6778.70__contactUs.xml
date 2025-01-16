@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<testsuites errors="0"
+            failures="2"
+            tests="7">
+
+  <testsuite name="contactUs"
+    errors="0" failures="2" hostname="" id="" package="contactUs" skipped="0"
+    tests="7" time="66.79" timestamp="">
+  
+    <testcase name="Testing submit with all fields" classname="contactUs" time="2.539" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Testing submit with required fields and file upload" classname="contactUs" time="1.795" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Testing submit with invalid order format" classname="contactUs" time="7.376" assertions="1">  <failure message="Timed out while waiting for element &lt;div.alert li&gt; to be present for 5000 milliseconds. - expected &#34;visible&#34; but got: &#34;not found&#34; (5194ms)">    at DescribeInstance.&lt;anonymous&gt; (D:\Mystore\Web\test\contactUs.js:34:14)</failure>
+<system-out>[[ATTACHMENT|D:\Mystore\Web\screens\contactUs\Testing-submit-with-invalid-order-format_FAILED_Jan-17-2025-002925-GMT+0200.png]]</system-out>
+    
+    </testcase>
+  
+    <testcase name="Testing submit with message containing only whitespace " classname="contactUs" time="7.405" assertions="1">  <failure message="Timed out while waiting for element &lt;div.alert li&gt; to be present for 5000 milliseconds. - expected &#34;visible&#34; but got: &#34;not found&#34; (5181ms)">    at DescribeInstance.&lt;anonymous&gt; (D:\Mystore\Web\test\contactUs.js:41:14)</failure>
+<system-out>[[ATTACHMENT|D:\Mystore\Web\screens\contactUs\Testing-submit-with-message-containing-only-whitespace-_FAILED_Jan-17-2025-002932-GMT+0200.png]]</system-out>
+    
+    </testcase>
+  
+    <testcase name="Testing submit with an invalid email format" classname="contactUs" time="2.136" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Testing submit with required fields only" classname="contactUs" time="1.817" assertions="2">
+
+    
+
+    
+    </testcase>
+  
+    <testcase name="Testing submit without required fields" classname="contactUs" time="4.456" assertions="6">
+
+    
+
+    
+
+    
+
+    
+
+    
+
+    
+    </testcase>
+  
+
+  
+
+    
+
+  
+  </testsuite>
+</testsuites>
