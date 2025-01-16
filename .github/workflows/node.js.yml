@@ -13,28 +13,35 @@ jobs:
         node-version: [ 20.x ]
 
     steps:
-      # Checkout repository
-      - uses: actions/checkout@v4
+      # Step 1: Checkout repository
+      - name: Checkout repository
+        uses: actions/checkout@v4
       
-      # Debug: Check folder structure immediately after checkout
+      # Step 2: Debug: Check folder structure
       - name: Debug folder structure
         run: ls -R
 
-      # Set up Node.js environment
+      # Step 3: Set up Node.js environment
       - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      # Debug: Check Web directory contents
+      # Step 4: Debug: Verify Web directory contents
       - name: Verify Web directory contents
         run: ls -R Web
 
-      # Install dependencies
-      - name: Install dependencies
-        run: cd Web && npm install
+      # Step 5: Debug: Print current working directory
+      - name: Print current working directory
+        run: pwd
 
-      # Run tests
+      # Step 6: Install dependencies
+      - name: Install dependencies
+        working-directory: Web
+        run: npm install
+
+      # Step 7: Run tests
       - name: Run tests
-        run: cd Web && npm run test
+        working-directory: Web
+        run: npm run test
