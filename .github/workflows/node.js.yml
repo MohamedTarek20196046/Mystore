@@ -1,5 +1,3 @@
-name: web && api
-
 on:
   push:
     branches: [ "main" ]
@@ -10,25 +8,27 @@ jobs:
   build:
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        # Use stable Node.js versions
+        node-version: [ 20.x ]
+        # Add more versions if needed
+
     steps:
       # Checkout repository
       - uses: actions/checkout@v4
       
       # Set up Node.js environment
-      - name: Use Node.js 20.x
+      - name: Use Node.js ${{ matrix.node-version }}
         uses: actions/setup-node@v4
         with:
-          node-version: 20.x
+          node-version: ${{ matrix.node-version }}
           cache: 'npm'
 
-      # Install dependencies in the 'web' directory
+      # Install dependencies
       - name: Install dependencies
-        run: |
-          cd web
-          npm ci
+        run: cd web && npm ci
 
-      # Run UI tests
-      - name: Run Ui tests
-        run: |
-          cd web
-          npm run test
+      # Run tests
+      - name: Run tests
+        run: cd web && npm run test
